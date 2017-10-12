@@ -47,6 +47,26 @@ public:
         }
         return output;
     }
+
+
+	//this is from leetcode
+    vector<int> productExceptSelf1(vector<int>& nums) {
+        vector<int> output(nums.size(), 1);
+		int total = 1;
+		for(int i = 1; i < nums.size(); i++)
+		{
+			total *= nums.at(i-1);
+			output[i] = total;
+		}
+
+		total = 1;
+		for(int i = nums.size()-1; i >= 0; i--)
+		{
+			output[i] *= total;
+			total *= nums.at(i);
+		}
+		return output;
+    }
 };
 
 int main()
@@ -54,7 +74,7 @@ int main()
     int arr[] = {0,0};
     vector<int> vec(arr, arr+2);
     Solution s;
-    vector<int> res = s.productExceptSelf(vec);
+    vector<int> res = s.productExceptSelf1(vec);
     for(int i = 0; i < res.size(); i++)
     {
         cout << res.at(i) << endl;

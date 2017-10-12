@@ -25,6 +25,8 @@ public:
             while(j < k)
             {
                 int sum = nums.at(i) + nums.at(j) + nums.at(k);
+				if(sum == target) //不加这句会超时TimeLimitedOut
+					return sum;
                 if(fabs(sum - target) < minDelta)
                 {
                     minDelta = fabs(sum - target);
